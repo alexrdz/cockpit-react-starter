@@ -8,8 +8,7 @@ export default function(state={}, action) {
 
     case FETCH_PAGE:
       return {
-        ...state,
-        page: action.payload
+        ...action.payload.data.entries[0]
       }
 
     default:

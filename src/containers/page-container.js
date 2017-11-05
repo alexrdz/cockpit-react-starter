@@ -5,22 +5,34 @@ import {fetchPage} from '../actions/index';
 
 function mapStateToProps(state, ownProps) {
   const {page} = ownProps.match.params;
+  console.log('state', state.pages.Body);
 
-  if (Object.keys(state.pages).length > 0 ) {
-    const {Body} = state.pages[page];
-
+  if (state.pages.Body) {
+    const {Body} = state.pages
     return {
-      ...state,
+      page,
       Body
     }
   }
-  
-  fetchPage(page);
-
+  // if (state.pages.Body > 0 ) {
+  //   const {Body} = state.pages[page];
+  //
+  //   return {
+  //     ...state,
+  //     page,
+  //     Body
+  //   }
+  // }
+  //
+  //
+  // return {
+  //   ...state,
+  //   page,
+  //   Body: '<p>no content set yet</p>'
+  // }
   return {
-    ...state,
     page,
-    Body: '<p>no content set yet</p>'
+    content: 'hi'
   }
 }
-export default connect(mapStateToProps)(Page);
+export default connect(mapStateToProps, {fetchPage})(Page);

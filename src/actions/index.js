@@ -11,7 +11,7 @@ export function fetchPages() {
 }
 
 export function fetchPage(slug) {
-  const request = axios.get(`${ROOT_URL}/get/pages${API_KEY}&populate=1&filter[_Title_slug]=${slug}`);
+  const request = axios.get(`${ROOT_URL}/get/pages${API_KEY}&populate=1&filter[Title_slug]=${slug}`);
 
   return {
     type: FETCH_PAGE,
