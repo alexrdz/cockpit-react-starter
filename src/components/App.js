@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import _ from 'lodash';
+import {HashRouter, Route} from 'react-router-dom';
 
+import Nav from './Nav';
+import Page from '../containers/page-container';
 
 class App extends Component {
 
@@ -10,27 +11,30 @@ class App extends Component {
   }
 
   render() {
-
     const {pages} = this.props;
-
-    if (Object.keys(pages).length > 0) {
-      const nav = _.map(pages, page =>
-        <Link to={`/${page.Title_slug}`} key={page._id} state={{body: page.Body}}><li>{page.Title}</li></Link>
-      );
+    const Homepage = () => {
+      const homePageContent = pages['home'].Body;
 
       return (
-        <div className="App">
-          <header className="App-header">
+        <div dangerouslySetInnerHTML={{__html: homePageContent}} />
+      );
+    }
 
-            <h1 className="App-title">App component header</h1>
-          </header>
-          <p className="App-intro">
-            APp component content
-          </p>
-          <ul>
-            {nav}
-          </ul>
-        </div>
+    if (Object.keys(pages).length > 0) {
+      return (
+        <HashRouter>
+          <div className="App">
+            <header className="App-header">
+              <h1 className="App-title">App component header</h1>
+              <Nav pages={pages} />
+            </header>
+            <p className="App-intro">
+              APp component content
+            </p>
+            <Route path="/:page" component={Page} />
+            <Route exact path="/" component={Homepage} />
+          </div>
+        </HashRouter>
       );
     }
 
