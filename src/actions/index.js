@@ -1,4 +1,4 @@
-import { ROOT_URL, API_KEY, FETCH_PAGES, FETCH_PAGE } from '../constants/index'
+import { ROOT_URL, API_KEY, FETCH_PAGES, FETCH_PAGE, FETCH_HOME_PAGE } from '../constants/index'
 import axios from 'axios';
 
 export function fetchPages() {
@@ -15,6 +15,17 @@ export function fetchPage(slug) {
 
   return {
     type: FETCH_PAGE,
+    payload: request
+  }
+}
+
+
+export function fetchHomePage() {
+  const request = axios.get(`${ROOT_URL}/get/homepage${API_KEY}`);
+
+
+  return {
+    type: FETCH_HOME_PAGE,
     payload: request
   }
 }

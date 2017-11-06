@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 export default (props) => {
   const {pages} = props;
-  const childPages = _.omit(pages, 'home');
+  const childPages = _.omit(pages, ['home', 'homepage']);
   const nav = _.map(childPages, page =>
     <Link to={`/${page.Title_slug}`} key={page._id}>
       <li>{page.Title}</li>

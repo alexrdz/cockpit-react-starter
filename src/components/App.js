@@ -3,6 +3,7 @@ import {HashRouter, Route} from 'react-router-dom';
 
 import Nav from './Nav';
 import Page from '../containers/page-container';
+import Homepage from '../containers/homepage-container';
 
 class App extends Component {
 
@@ -12,13 +13,13 @@ class App extends Component {
 
   render() {
     const {pages} = this.props;
-    const Homepage = () => {
-      const homePageContent = pages['home'].Body;
-
-      return (
-        <div dangerouslySetInnerHTML={{__html: homePageContent}} />
-      );
-    }
+    // const Homepage = () => {
+    //   const homePageContent = pages['home'].Body;
+    //
+    //   return (
+    //     <div dangerouslySetInnerHTML={{__html: homePageContent}} />
+    //   );
+    // }
 
     if (Object.keys(pages).length > 0) {
       return (
