@@ -1,26 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Homepage extends Component {
-  componentDidMount() {
-    this.props.fetchHomePage()
-  }
-  renderContent() {
-    const {homepage} = this.props;
-    if (homepage) {
-      return (
-        <p>{homepage.Craft}</p>
-      );
-    }
-  }
-  render() {
+Homepage.propTypes = {
+  craft: PropTypes.string,
+  mission: PropTypes.string,
+  beers: PropTypes.string
+}
 
-    return (
-      <div>
-        the homepage component.
-        {this.renderContent()}
-      </div>
-    );
-  }
+function Homepage(props) {
+  const {
+    Craft,
+    Mission,
+    Beers} = props.homepage;
+
+  return (
+    <div>
+      the homepage component.
+      <h3>{Craft}</h3>
+      <p>{Mission}</p>
+      <h4>{Beers}</h4>
+    </div>
+  );
 }
 
 export default Homepage;

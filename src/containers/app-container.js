@@ -1,15 +1,22 @@
 import {connect} from 'react-redux';
-import _ from 'lodash';
+import {bindActionCreators} from 'redux';
 
 import App from '../components/App';
 import {fetchPages} from '../actions/index';
+import {fetchHomePage} from '../actions/index';
 
-function mapStateToProps(state) {
-  // state.pages = _.omit(state.pages, 'homepage');
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchPages,
+    fetchHomePage
+  }, dispatch);
+}
 
+const mapStateToProps = (state) =>{
   return {
-    pages: state.pages
+    pages: state.pages,
+    homepage: state.pages.homepage
   }
 }
 
-export default connect(mapStateToProps, {fetchPages})(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

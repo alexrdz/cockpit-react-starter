@@ -1,8 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default (props) => {
+Nav.propTypes = {
+  pages: PropTypes.object
+}
+
+function Nav(props) {
   const {pages} = props;
   const childPages = _.omit(pages, ['home', 'homepage']);
   const nav = _.map(childPages, page =>
@@ -20,3 +25,5 @@ export default (props) => {
     </nav>
   )
 }
+
+export default Nav;

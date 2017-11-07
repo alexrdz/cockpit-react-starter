@@ -1,6 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default (props) => {
+Page.propTypes = {
+  page: PropTypes.string,
+  pages: PropTypes.object,
+  Body: PropTypes.string
+}
+
+function Page(props) {
   const {page, pages} = props;
   const {Body} = pages[page];
 
@@ -8,3 +15,5 @@ export default (props) => {
     <div dangerouslySetInnerHTML={{__html: Body}} />
   );
 }
+
+export default Page;

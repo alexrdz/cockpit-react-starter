@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {HashRouter, Route} from 'react-router-dom';
 
 import Nav from './Nav';
@@ -9,19 +9,13 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchPages();
+    this.props.fetchHomePage();
   }
 
   render() {
-    const {pages} = this.props;
-    // const Homepage = () => {
-    //   const homePageContent = pages['home'].Body;
-    //
-    //   return (
-    //     <div dangerouslySetInnerHTML={{__html: homePageContent}} />
-    //   );
-    // }
+    const {pages, homepage} = this.props;
 
-    if (Object.keys(pages).length > 0) {
+    if (homepage) {
       return (
         <HashRouter>
           <div className="App">
@@ -39,6 +33,7 @@ class App extends Component {
       );
     }
 
+    this.props.fetchHomePage();
     return 'Loading...';
   }
 }

@@ -4,7 +4,7 @@ import Page from '../components/Page'
 function mapStateToProps(state, ownProps) {
   const {page} = ownProps.match.params;
 
-  if (state.pages.Body > 0 ) {
+  if (state.pages.Body) {
     const {Body} = state.pages[page];
 
     return {
