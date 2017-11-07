@@ -3,3 +3,4 @@ export const API_KEY = '?token=xxxxxxtoken';
 
 export const FETCH_PAGES = 'FETCH_PAGES';
 export const FETCH_PAGE = 'FETCH_PAGE';
+export const FETCH_HOME_PAGE = 'FETCH_HOME_PAGE';
