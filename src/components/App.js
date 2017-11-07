@@ -7,34 +7,34 @@ import Homepage from '../containers/homepage-container';
 
 class App extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchPages();
     this.props.fetchHomePage();
   }
 
+  renderContent() {
+    const {pages} = this.props;
+    return (
+      <HashRouter>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">App component header</h1>
+            <Nav pages={pages} />
+          </header>
+          <p className="App-intro">
+            APp component content
+          </p>
+          <Route path="/:page" component={Page} />
+          <Route exact path="/" component={Homepage} />
+        </div>
+      </HashRouter>
+    );
+  }
+
   render() {
-    const {pages, homepage} = this.props;
+    const {homepage} = this.props.pages;
 
-    if (homepage) {
-      return (
-        <HashRouter>
-          <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">App component header</h1>
-              <Nav pages={pages} />
-            </header>
-            <p className="App-intro">
-              APp component content
-            </p>
-            <Route path="/:page" component={Page} />
-            <Route exact path="/" component={Homepage} />
-          </div>
-        </HashRouter>
-      );
-    }
-
-    this.props.fetchHomePage();
-    return 'Loading...';
+    return homepage ? this.renderContent() : <div>Loading...</div>;
   }
 }
 

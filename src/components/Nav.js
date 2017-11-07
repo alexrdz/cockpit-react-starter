@@ -3,10 +3,6 @@ import _ from 'lodash';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-Nav.propTypes = {
-  pages: PropTypes.object
-}
-
 function Nav(props) {
   const {pages} = props;
   const childPages = _.omit(pages, ['home', 'homepage']);
@@ -24,6 +20,10 @@ function Nav(props) {
       </ul>
     </nav>
   )
+}
+
+Nav.propTypes = {
+  pages: PropTypes.object
 }
 
 export default Nav;

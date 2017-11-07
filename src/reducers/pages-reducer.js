@@ -4,7 +4,10 @@ import { FETCH_HOME_PAGE, FETCH_PAGE, FETCH_PAGES } from '../constants/index'
 export default function(state={}, action) {
   switch (action.type) {
     case FETCH_PAGES:
-      return _.mapKeys(action.payload.data.entries, 'Title_slug');
+      return {
+        ...state,
+        ...(_.mapKeys(action.payload.data.entries, 'Title_slug'))
+      }
 
     case FETCH_PAGE:
       return {

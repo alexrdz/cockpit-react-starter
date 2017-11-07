@@ -23,7 +23,6 @@ export function fetchPage(slug) {
 export function fetchHomePage() {
   const request = axios.get(`${ROOT_URL}/get/homepage${API_KEY}`);
 
-
   return {
     type: FETCH_HOME_PAGE,
     payload: request
